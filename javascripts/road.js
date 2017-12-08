@@ -79,7 +79,7 @@ function init()  {
   road.rotation.z = 3.1415/2;
 
   road.add(tree);
-  scene.add(tree);
+  scene.add(road);
 
   renderer = new THREE.WebGLRenderer();
   renderer.setSize( window.innerWidth, window.innerHeight );
@@ -103,7 +103,7 @@ function animate() {
 }
 
 function updateSpeed(dx) {
-  tree.matrixWorld = tree.matrixWorld.multiply(new THREE.Matrix4().makeRotationX(tree.rotation.x + speed * dx));
+  road.applyMatrix(new THREE.Matrix4().makeRotationX( speed * dx));
 }
 
 function updatePosition(dx) {
