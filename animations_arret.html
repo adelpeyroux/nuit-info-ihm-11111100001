@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Bonne conduite sur la route</title>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="animations.css"></link>
+ <script src="creation_modaux.js" ></script>
+<script>
+
+$(document).ready(function(){
+
+    $("#mamie").click(function(){
+		createModalMamie();
+		var screenW = screen.width*0.8;
+		$("#mamieImg").animate({left: screenW}, 10000, "linear", function(){$("#modalMamie").remove()});
+    });
+	
+	$("#feu").click(function(){
+		createModalFeu();
+		var i = 5;
+		animateFeu(i);
+	});
+		
+});
+</script>
+</head>
+<body>
+
+<h1>Bonne conduite sur la route</h1>
+<p>Nous vous proposons deux illustrations du comportement que vous devez avoir sur la route dans les cas de :</p>
+<button id="mamie" style="margin:10%;position:absolute;left:0px;" class="btn-primary">Traversée de la route par une dame agée</button>
+<button id="feu" class="btn-primary" style="margin:10%;position:absolute;left:25%;">Comportement au feu rouge</button>
+
+
+</body>
+
+</html> 
