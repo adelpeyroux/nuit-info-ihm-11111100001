@@ -19,8 +19,15 @@ var formatValue = function (value, maxValue, deadZone) {
   return value;
 };
 
+
 var leapController = new Leap.Controller();
 leapController.connect();
+
+var lastResult;
+
+var decreaseCommands = function () {
+
+};
 
 var processFrame =  function(frame){
   let nbTrackedHands = frame.hands.length;
@@ -49,11 +56,12 @@ var processFrame =  function(frame){
     console.log(`dir: ${direction}; forward: ${forward}`);
     
   } else if (nbTrackedHands == 1) {
-
+    
     
   } else {
 
   }
 
+  lastResult = result;
   return result;
 };
