@@ -19,8 +19,13 @@ var formatValue = function (value, maxValue, deadZone) {
   return value;
 };
 
-var controller = Leap.loop({enableGestures:true}, function(frame){
+var leapController = new Leap.Controller();
+leapController.connect();
+
+var processFrame =  function(frame){
   let nbTrackedHands = frame.hands.length;
+
+  let result = {direction: 0, forward: 0};
 
   if (nbTrackedHands >= 2) {
     let hand0 = frame.hands[0].isLeft ? frame.hands[0] : frame.hands[1];
@@ -35,11 +40,11 @@ var controller = Leap.loop({enableGestures:true}, function(frame){
 
     let delta = position0[1] - position1[1];
 
-    direction = formatValue(delta, max_dir, dead_zone);
+    result.direction = formatValue(delta, max_dir, dead_zone);
 
     let mean_z = -1 * (position0[2] + position1[2]) / 2;
 
-    forward = formatValue(mean_z, max_forward, dead_zone * 3);
+    result.forward = formatValue(mean_z, max_forward, dead_zone * 3);
     
     console.log(`dir: ${direction}; forward: ${forward}`);
     
@@ -49,4 +54,6 @@ var controller = Leap.loop({enableGestures:true}, function(frame){
   } else {
 
   }
-});
+
+  return result;
+};
