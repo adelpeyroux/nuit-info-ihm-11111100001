@@ -1,0 +1,39 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="animations.css"></link>
+ <script src="creation_modaux.js" ></script>
+<script>
+
+$(document).ready(function(){
+
+    $("#mamie").click(function(){
+		createModalMamie();
+		var screenW = screen.width*0.8;
+		$("#mamieImg").animate({left: screenW}, 10000, "linear", function(){$("#modalMamie").remove()});
+    });
+	
+	$("#feu").click(function(){
+		createModalFeu();
+		var i = 5;
+		animateFeu(i);
+	});
+		
+});
+</script>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<button id="mamie">Wait grand-ma</button>
+<br/>
+<button id="feu">Start feu rouge</button>
+
+
+</body>
+
+</html> 
